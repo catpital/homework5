@@ -1,40 +1,35 @@
-#include "header.h"
-#include <cstdlib>
-#include "automat.cpp"
-using namespace std;
-
+// Snack automat
+#include "Automat.h"
+//#include "Snack.cpp"
 #include <iostream>
-/*
-автомат по продаже снеков
-*/
-int main() 
+#include <cstdlib>
+//#include <stdio.h>
+#include <locale.h>
+using namespace std;
+int main()
 {
-		setlocale(LC_ALL, "");
-
-		//Automatic() = default;
-  //  ~Automatic() = default;
-		//Automatic Automatic;
-		Automatic *A = new Automatic("A");
-		
-	Snack *bounty = new Snack("Bounty");
-	Snack* twix = new Snack("Twix", 200, 60.4);
-	Snack* snickers = new Snack("Snickers");
-	//Automatic* Slot = new SnackSlot(10/*количество батончиков, которые помещаютс€ в слот*/);
-	//  Slot->addSnack("Bounty"); //ƒобавл€ем батончик в слот
-	//Slot->addSnack("Snickers");
-	//Automatic.A::set AutomatID = new AutomatID(FullSlots /* оличество слотов дл€ снеков*/);
-	//Automat->addSlot(Slot); // ѕомещаем слот обратно в аппарат
-	// cout << machine->getEmptySlotsCount(); 
-	//cout << Automatic::getEmptySlotsCount << endl; // ƒолжно выводить количество пустых слотов дл€ снеков
-	//cout << bounty.ShowSnack() << endl;
-//	twix->ShowSnack();
-	//std::cout<< bounty& ->bounty.ShowSnack() << endl;
-	//cout << getName_Snack.bounty << endl;
-	delete Automatic;
-	delete Snack;
-	//delete Slot;
-	//delete snickers;
-	//delete bounty;
-	//~Automatic() = default;
-
+	setlocale(LC_ALL, "");
+	
+	
+	Snack *Bounty = new Snack("Bounty", 200, 20);
+	Snack *snickers = new Snack("Snickers",350,15);
+	 SnacksSlot *slot = new SnacksSlot("slot", 10, "brand1"); /*количество батончиков, которые помещаютс€ в слот*/
+	 
+	 cout<< "количество слотов "<<slot->getSlotnom() << endl;
+	 slot->  addSnackSlot();
+	 //  SnacksSlot->addSnack(bounty); //ƒобавл€ем батончик в слот
+	  slot->setBrand("snickers");
+	 VendingMachine *machine = new VendingMachine("machine", 10); // оличество слотов дл€ снеков*
+	  machine->addSlot(1); // ѕомещаем слот обратно в аппарат
+	 
+	 cout << "текущее количество свободных слотов "<<machine->getEmptySlotsCount() << endl; // ƒолжно выводить количество пустых слотов дл€ снеков
+	//  delete machine;
+	Bounty->DisplaySnack();
+	 cout << endl;
+	 snickers->DisplaySnack();
+	 slot->Display();
+	delete slot;
+	delete snickers;
+	delete Bounty;
+	//~Snack();
 }
