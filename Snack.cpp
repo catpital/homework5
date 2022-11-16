@@ -1,7 +1,7 @@
 #include "Automat.h"
 #include <iostream>
 #include <cstdlib>
-//#include <stdio.h>
+
 #include <locale.h>
 using namespace std;
 
@@ -69,9 +69,12 @@ SnacksSlot::SnacksSlot(const char* sname, int sslot, const char* snbrand)
 	cout << "SnackSlot " << Slotname << endl;
 	cout << "SnackSlot " << Slot_nom << endl;
 }
-//SnacksSlot::SnacksSlot(Snack)
-//{
-//}
+void SnacksSlot::addSnack(const char* snbrand)
+{
+	Brand = snbrand;
+	cout << "добавили батончик " << Brand << endl;
+	cout << endl;
+}
 void SnacksSlot::setSlot_nom(int sslot)
 {
 	Slot_nom = sslot;
@@ -99,25 +102,27 @@ void SnacksSlot::Display()
 
    /*      VendingMachine       */
 
-VendingMachine::VendingMachine(const char *nammachine, int slotcount)
+VendingMachine::VendingMachine(const char *nammachine, int slotcount, const char* Slotname)
 {
 	Machname = nammachine;
 	Count_slots = slotcount;
+	SLname = Slotname;
 	
 }
-//VendingMachine::VendingMachine(Snack)
-//{
-	//Machname = nammachine;
-	 // Count_slots = slotcount;
+VendingMachine::VendingMachine(const char* nammachine, int slotcount)
+{
+	    Machname = nammachine;
+		Count_slots = slotcount;
 
-//}
-// int VendingMachine::setslot(int slotcount);
+}
 
-int VendingMachine::addSlot(int slotcount)
+
+int VendingMachine::addSlot(int slotcount, const char* Slotname)
 {
 	if (slotcount < count_slot_full)
 	{
 		slotcount++;
+		SLname = Slotname;
 		return slotcount;
 	}
 	else
@@ -132,9 +137,9 @@ int VendingMachine::getEmptySlotsCount()
 }
 void VendingMachine::Display()
 {
-	cout << "пустых слотов " << EmptySlotsCount<<endl;
+	
+	cout << "Машина " << Machname<<endl;
+	cout << "Вренд в слоте " << SLname << endl;
+	cout << "пустых слотов " << EmptySlotsCount << endl;
 }
-//void VendingMachine::AddTypSlot()
-//{
-	// TypSlot = Snack.Snack_Name;
-//}
+
